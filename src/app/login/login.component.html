@@ -1,0 +1,37 @@
+<div class="container mt-5 pt-3">
+  <div class="row">
+    <div class="form-group col-xs-12 col-md-6 col-lg-6 col-xl-6">
+      <form class="form-group" [formGroup]="loginForm" novalidate>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="{{'Enter your Username'}}" name="email"
+            autocomplete="off" formControlName="username" [(ngModel)]="userCredentials.userName">
+        </div>
+        <app-form-error-control-message [control]="loginForm.controls.username" [name]="'Unique ID'">
+        </app-form-error-control-message>
+        <div class="form-group">
+          <input class="form-control" [type]="show ? 'text' : 'password'" placeholder="{{'Password'}}" name="password"
+            formControlName="password" [(ngModel)]="userCredentials.password">
+          <a href class="showPassword" (click)="showPassClick()" aria-hidden="true">{{show ? 'Hide' : 'Show'}}</a>
+        </div>
+        <app-form-error-control-message [control]="loginForm.controls.password" [name]="'Password'">
+        </app-form-error-control-message>
+        <!-- <div class="row disclaimer">*{{"SENSITIVE_NAME_PASS" | translatePipe}}</div> -->
+        <!-- <div class="row m-login__form-sub">
+       <div class="col m--align-right">
+         <a href="javascript:;" id="m_login_forget_password" routerLink="/forgot-password" class="m-link  m--font-info">
+           {{"FORGOT" | translatePipe}}
+         </a>
+       </div>
+     </div> -->
+        <div class="m-login__form-action">
+          <button type="button" class="btn btn-primary" [disabled]="!loginForm.valid" (click)="doLogin()">
+            LOGIN
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="form-group col-xs-12 col-md-6 col-lg-6 col-xl-6">
+
+    </div>
+  </div>
+</div>

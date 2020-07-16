@@ -1,0 +1,74 @@
+<div class="container mt-5 pt-3">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
+      <form class="form-group" [formGroup]="userDetailsForm">
+        <div class="form-group">
+          <select class="form-control m-select" id="exampleSelect1" formControlName="role"
+            [(ngModel)]="userAccount.role" (change)="assignPlaceHolder()">
+            <option value=""></option>
+            <option value="Admin">Admin</option>
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+          </select>
+          <app-form-error-control-message [control]="userDetailsForm.controls.role" [name]="'Role'">
+          </app-form-error-control-message>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="{{placeHolder}}" name="name" formControlName="name"
+            [(ngModel)]="userAccount.firstName" autocomplete="off">
+          <!-- <span class="m-form__help">
+        {{ AADHAAR_NAME}}
+      </span> -->
+          <app-form-error-control-message [control]="userDetailsForm.controls.name" [name]="'Name'">
+          </app-form-error-control-message>
+        </div>
+
+        <div class="form-group">
+          <input class="form-control" type="email" placeholder="{{email}}" name="email" formControlName="email"
+            [(ngModel)]="userAccount.email">
+          <app-form-error-control-message [control]="userDetailsForm.controls.email" [name]="'Email Address'">
+          </app-form-error-control-message>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="{{ mobileNo}}"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="mobile" maxlength="10"
+            formControlName="mobile" [(ngModel)]="userAccount.phone.mobile">
+          <app-form-error-control-message [control]="userDetailsForm.controls.mobile" [name]="'Mobile Number'">
+          </app-form-error-control-message>
+        </div>
+        <!-- <div class="row form-group m-form__group m-login__form-sub">
+      <div class="col m--align-left">
+        <label class="m-checkbox m-checkbox--focus">
+          <input type="checkbox" name="agree" formControlName="changeStatusChecked">
+          {{"TERMS"|translatePipe}}
+          <a href="javascript:;" data-toggle="modal" data-target="#m_modal_1_2"
+            class="m-link m-link--focus">{{"CONDITIONS"|translatePipe}}</a>.
+          <span></span>
+        </label>
+        <span class="m-form__help"></span>
+      </div>
+    </div> -->
+        <!-- <div class="recaptchaAllign">
+      <re-captcha (resolved)="resolveRecaptcha($event)"></re-captcha>
+    </div> -->
+        <div class="m-login__form-action ">
+          <button class="btn btn-info" [disabled]="userDetailsForm.invalid" (click)="register()">
+            Register
+          </button>
+          <div class="form-group">
+            <span>Already have Account</span>
+            <button class="btn btn-info" (click)="login()">
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
+
+    </div>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
