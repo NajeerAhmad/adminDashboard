@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route, CanLoad, CanActivate } from '@angular/router';
 import { SharedService } from './shared.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,24 @@ import { SharedService } from './shared.service';
 export class RouterGurdService implements CanLoad, CanActivate {
 
   constructor(private router: Router,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService,
+    private authService: AuthService) { }
 
   canActivate() {
     console.log('i am checking to see if you are logged in');
-    if (this.sharedService.isSignin === true) {
+    if (this.authService.isSignin === true) {
+      return true;
+    } else if (this.authService.loggedInUser === 'ADMIN') {
       return true;
     } else {
       return false;
+
     }
+    // if (this.authService.isloggedIn === true) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
   }
 
   canLoad(route: Route): boolean {

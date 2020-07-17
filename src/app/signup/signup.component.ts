@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidationComponent } from '../services/validation/validation.component';
 import { SharedService } from '../services/shared.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -26,7 +27,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private authService: AuthService
   ) {
   }
 
@@ -52,11 +54,12 @@ export class SignupComponent implements OnInit {
     console.log('this.userDetailsForm.value', this.userDetailsForm.value)
     this.usersArray.push(this.userDetailsForm.value);
     this.sharedService.setData(this.usersArray);
+    this.authService.isSignin = true;
     this.router.navigate(['./login']);
   }
 
   login() {
-    this.router.navigate(['./login'])
+    this.router.navigate(['./login']);
   }
 
 }

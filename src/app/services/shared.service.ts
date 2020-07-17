@@ -10,7 +10,7 @@ export class SharedService {
 
   setData(data) {
     this.usersData = data;
-    this.isSignin = true;
+    // this.isSignin = true;
   }
 
   getData() {
