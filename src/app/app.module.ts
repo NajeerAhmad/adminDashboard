@@ -15,7 +15,7 @@ import { AdminModule } from './admin/admin.module';
   declarations: [
     AppComponent,
     ValidationComponent,
-    LogoutComponent,
+    // LogoutComponent,
     DashboardLayoutComponent,
     PageNotFoundComponent,
   ],

@@ -28,6 +28,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
     },
     {
+      path: 'landingPage',
+      loadChildren: () => import('../app/landing-page/landing-page.module').then(m => m.LandingPageModule),
+      // canActivate: [RouterGurdService]
+
+    },
+    {
       path: '**',
       component: PageNotFoundComponent
     }
