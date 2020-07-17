@@ -1,11 +1,11 @@
 <div class="container mt-5 pt-3">
   <div class="row">
     <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
-      <form class="form-group" [formGroup]="userDetailsForm">
+      <form *ngIf="userDetailsForm" class="form-group" [formGroup]="userDetailsForm">
         <div class="form-group">
           <select class="form-control m-select" id="exampleSelect1" formControlName="role"
-            [(ngModel)]="userAccount.role" (change)="assignPlaceHolder()">
-            <option value=""></option>
+            (change)="assignPlaceHolder()">
+            <option [value]=""></option>
             <option value="Admin">Admin</option>
             <option value="Student">Student</option>
             <option value="Teacher">Teacher</option>
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
           <input class="form-control" type="text" placeholder="{{placeHolder}}" name="name" formControlName="name"
-            [(ngModel)]="userAccount.firstName" autocomplete="off">
+            autocomplete="off">
           <!-- <span class="m-form__help">
         {{ AADHAAR_NAME}}
       </span> -->
@@ -24,15 +24,14 @@
         </div>
 
         <div class="form-group">
-          <input class="form-control" type="email" placeholder="{{email}}" name="email" formControlName="email"
-            [(ngModel)]="userAccount.email">
+          <input class="form-control" type="email" placeholder="{{email}}" name="email" formControlName="email">
           <app-form-error-control-message [control]="userDetailsForm.controls.email" [name]="'Email Address'">
           </app-form-error-control-message>
         </div>
         <div class="form-group">
           <input class="form-control" type="text" placeholder="{{ mobileNo}}"
             onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="mobile" maxlength="10"
-            formControlName="mobile" [(ngModel)]="userAccount.phone.mobile">
+            formControlName="mobile">
           <app-form-error-control-message [control]="userDetailsForm.controls.mobile" [name]="'Mobile Number'">
           </app-form-error-control-message>
         </div>
